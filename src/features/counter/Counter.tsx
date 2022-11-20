@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-import { useAppSelector, useAppDispatch } from '../../hooks'
+import { useAppSelector, useAppDispatch } from '../../hooks';
 import {
   decrement,
   increment,
@@ -8,18 +8,20 @@ import {
   incrementAsync,
   incrementIfOdd,
   selectCount,
-} from './counterSlice'
-import styles from './Counter.module.css'
+} from './counterSlice';
+import styles from './Counter.module.css';
+import stylesSass from './hello-world.module.scss'
 
 function Counter() {
-  const dispatch = useAppDispatch()
-  const count = useAppSelector(selectCount)
-  const [incrementAmount, setIncrementAmount] = useState('2')
+  const dispatch = useAppDispatch();
+  const count = useAppSelector(selectCount);
+  const [incrementAmount, setIncrementAmount] = useState('2');
 
-  const incrementValue = Number(incrementAmount) || 0
+  const incrementValue = Number(incrementAmount) || 0;
 
   return (
     <div>
+      <div className={stylesSass.hello}>test red/green</div>
       <div className={styles.row}>
         <button
           className={styles.button}
@@ -56,15 +58,12 @@ function Counter() {
         >
           Add Async
         </button>
-        <button
-          className={styles.button}
-          onClick={() => dispatch(incrementIfOdd(incrementValue))}
-        >
+        <button className={styles.button} onClick={() => dispatch(incrementIfOdd(incrementValue))}>
           Add If Odd
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default Counter
+export default Counter;
